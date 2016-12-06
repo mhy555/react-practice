@@ -18,7 +18,7 @@ module.exports = {
     }
   }),
   new OpenBrowserPlugin({
-    url: 'http://10.9.28.150:8080/index.html'
+    url: 'http://127.0.0.1:8080/index.html'
   })
   ],
   //页面入口文件配置
@@ -40,7 +40,17 @@ module.exports = {
       //.scss 文件使用 style-loader、css-loader 和 sass-loader 来编译处理
       { test: /\.scss$/, loader: 'style!css!sass?sourceMap'},
       //图片文件使用 url-loader 来处理，小于8kb的直接转为base64
-      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}
+      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'},
+      {
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        loaders: ['babel?{"presets": ["es2015", "react"], "compact": false}']
+      },
+      {
+        test : /(common\-module|src)\/.*\.js$/,
+        exclude : /(src\/vendor\/|node_modules)/,
+        loaders: ['babel?{"presets": "es2015", "compact": false}']
+      }
     ]
   },
   //其它解决方案配置
@@ -58,7 +68,7 @@ module.exports = {
   },
   devServer: {
     port: 8080,
-    host: '10.9.28.150',
+    host: '127.0.0.1',
     contentBase: './dist'
   }
 };
