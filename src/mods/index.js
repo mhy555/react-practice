@@ -13,17 +13,9 @@ var indexModel, indexView;
   var undef;
 
   indexModel = Backbone.Model.extend({
-    DEFAULT_ACT: 'index',
     defaults: {
-      winHeight: 0,
-      scene: -1,
-      result: '',
-      code: null
-    },
-    reactLinkAttrs: [
-      'scene',
-      'winHeight'
-    ],
+
+    }
   })
 
   indexView = Backbone.View.extend({
