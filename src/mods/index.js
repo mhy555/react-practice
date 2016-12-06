@@ -37,7 +37,7 @@ var indexModel, indexView;
       ReactDom.render(template.render(),
         this.$el.get(0)
       );
-      // return this;
+      return this;
     }
   })
 
